@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "sourceMaps": false,
+  "minify": false,
+  "isModule": true,
+  "module": {
+    "noInterop": true,
+    "type": "es6",
+    "strict": true,
+    "strictMode": true,
+    "resolveFully": true
+  },
+  "jsc": {
+    "baseUrl": "./",
+    "loose": true,
+    "experimental": {
+      "keepImportAssertions": true,
+      "emitAssertForImportAttributes": true,
+      "disableBuiltinTransformsForInternalTesting": false
+    },
+    "target": "esnext",
+    "paths": {
+      "#lib/*": ["lib/*.ts"]
+    },
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "dynamicImport": true,
+      "dts": true,
+      "importAssertions": false
+    }
+  }
+}

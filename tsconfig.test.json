@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["test/**/*",
+    "src/**/*"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "noEmit": true,
+    "isolatedDeclarations": false,
+    "isolatedModules": false,
+    "paths": {
+      "#lib/*": ["lib/*.ts"],
+      "#test/*": ["test/*.ts"]
+    }
+  }
+}

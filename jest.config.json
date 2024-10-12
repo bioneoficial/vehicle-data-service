@@ -1,0 +1,20 @@
+{
+  "testEnvironment": "node",
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "extensionsToTreatAsEsm": [".ts"],
+  "testRegex": ".*\\.test\\.ts$",
+  "transform": {
+    "^.+\\.ts$": [
+      "ts-jest",
+      {
+        "useESM": true,
+        "tsconfig": "<rootDir>/tsconfig.test.json",
+        "isolatedModules": true
+      }
+    ]
+  },
+  "moduleNameMapper": {
+    "^#lib/(.*)$": "<rootDir>/lib/$1",
+    "^#test/(.*)$": "<rootDir>/test/$1"
+  }
+}

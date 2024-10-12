@@ -1,0 +1,9 @@
+/src
+/test
+package-lock.json
+tslint.json
+tsconfig*.json
+tsconfig.tsbuildinfo
+jest.config.json
+*.log
+.*

@@ -1,0 +1,14 @@
+.git
+.github
+.gitignore
+.tool-versions
+.prettierrc
+.lintstagedrc
+.dockerignore
+.env
+.env.*
+Dockerfile*
+docker-compose.dev.yml
+*.md
+node_modules/
+review-required/
