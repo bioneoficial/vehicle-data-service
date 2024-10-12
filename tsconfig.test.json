@@ -10,7 +10,7 @@
     "isolatedDeclarations": false,
     "isolatedModules": false,
     "paths": {
-      "#lib/*": ["lib/*.ts"],
+      "#src/*": ["src/*.ts"],
       "#test/*": ["test/*.ts"]
     }
   }

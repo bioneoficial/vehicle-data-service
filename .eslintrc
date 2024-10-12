@@ -20,7 +20,7 @@
     "@typescript-eslint",
     "import",
     "jsdoc",
-    "prettier",
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",

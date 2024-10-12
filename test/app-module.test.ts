@@ -1,10 +1,10 @@
-import type { AppServiceInterface } from '../src/app-service.interface'
+import type { AppServiceInterface } from '#src/app-service.interface'
 import type { TestingModule } from '@nestjs/testing'
 
 import { Test } from '@nestjs/testing'
 
-import { APP_SERVICE } from '../src/app.constants'
-import { AppModule } from '../src/app.module'
+import { APP_SERVICE } from '#src/app.constants'
+import { AppModule } from '#src/app.module'
 
 describe('AppModule', () => {
   let appModule: TestingModule
