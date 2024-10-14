@@ -4,6 +4,5 @@ export interface AppConfig {
   host: string
   apiPrefix: string
   defaultApiVersion: string
-  swaggerApiPath: string
   apiUrl: string
 }

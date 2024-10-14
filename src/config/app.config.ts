@@ -10,6 +10,5 @@ export default registerAs<AppConfig>('app', () => ({
   host: environment.HOST || 'localhost',
   apiUrl: environment.API_URL || 'http://localhost:4000',
   apiPrefix: environment.API_PREFIX ?? 'api',
-  defaultApiVersion: '1',
-  swaggerApiPath: environment.SWAGGER_API_PATH ?? 'api-docs'
+  defaultApiVersion: '1'
 }))

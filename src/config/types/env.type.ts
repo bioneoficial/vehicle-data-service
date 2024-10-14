@@ -4,7 +4,6 @@ export interface Environment {
   HOST: string
   PORT: string
   API_URL: string
-  SWAGGER_API_PATH?: string
   IGNORE_ENV_FILE?: 'true' | 'false'
   DB_TYPE?: string
   DB_SCHEMA?: string

@@ -1,5 +1,7 @@
 import type { Environment } from './types'
 
-import process from 'node:process'
+import { config } from 'dotenv'
+
+config()
 
 export default process.env as unknown as Environment

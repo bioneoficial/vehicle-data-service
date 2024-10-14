@@ -1,15 +1,21 @@
 import { HttpModule } from '@nestjs/axios'
-import { Module } from '@nestjs/common'
+import { forwardRef, Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
+
+import { Make } from '#src/makes/entitites/make.entity'
+import { VehicleTypesModule } from '#src/vehicle-types/vehicle-types.module'
 
 import { MakesResolver } from './makes.resolver'
 import { MakesService } from './makes.service'
-import { Make } from '../entities/make.entity'
-import { VehicleType } from '../entities/vehicle-type.entity'
 import { XmlParserModule } from '../xml-parser/xml-parser.module'
 
 @Module({
-  imports: [HttpModule, TypeOrmModule.forFeature([Make, VehicleType]), XmlParserModule],
+  imports: [
+    HttpModule,
+    TypeOrmModule.forFeature([Make]),
+    XmlParserModule,
+    forwardRef(() => VehicleTypesModule)
+  ],
   providers: [MakesService, MakesResolver]
 })
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class

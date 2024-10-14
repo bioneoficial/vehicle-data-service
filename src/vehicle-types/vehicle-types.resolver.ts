@@ -1,9 +1,8 @@
-import type { VehicleTypesService } from 'src/vehicle-types/vehicle-types.service'
-
 import { Resolver, Query, Args, Int } from '@nestjs/graphql'
 
-import { VehicleTypeDTO } from './dto/vehicle-type.dto'
-import { VehicleType } from '../entities/vehicle-type.entity'
+import { VehicleTypeDTO } from '#src/vehicle-types/dto/vehicle-type.dto'
+import { VehicleType } from '#src/vehicle-types/entities/vehicle-type.entity'
+import { VehicleTypesService } from 'src/vehicle-types/vehicle-types.service'
 
 @Resolver(() => VehicleTypeDTO)
 export class VehicleTypesResolver {

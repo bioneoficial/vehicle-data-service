@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import type { DatabaseConfig } from './types'
 
 import { ConfigModule } from '@nestjs/config'

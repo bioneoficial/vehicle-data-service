@@ -14,9 +14,7 @@ export default registerAs<DatabaseConfig>('database', () => ({
   database: environment.DB_NAME,
   entities: ['./**/*.entity.js', './dist/**/*.entity.js'],
   migrations: ['./database/migrations/*.js', './dist/database/migrations/*.js'],
-  factories: ['./database/factories/*.js', './dist/database/factories/*.js'],
   autoLoadEntities: true,
-  seeds: ['./database/seeds/*.js', './dist/database/seeds/*.js'],
   synchronize: false,
   useUTC: true,
   migrationsTransactionMode: 'each'

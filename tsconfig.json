@@ -13,9 +13,9 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedDeclarations": false,
-    "lib": ["ESNext"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "outDir": "./dist",
@@ -34,11 +34,12 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "ESNext",
+    "target": "ES2022",
     "types": ["node", "jest"],
     "useDefineForClassFields": true,
     "useUnknownInCatchVariables": true,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "dist"]
 }

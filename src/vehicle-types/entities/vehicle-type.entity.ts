@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
+import type { Make } from '../../makes/entitites/make.entity'
 
-import { Make } from './make.entity'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
 
 @Entity()
 export class VehicleType {
@@ -13,6 +13,6 @@ export class VehicleType {
   @Column()
   vehicleTypeName!: string
 
-  @ManyToOne(() => Make, make => make.vehicleTypes)
+  @ManyToOne('Make', 'vehicleTypes')
   make!: Make
 }

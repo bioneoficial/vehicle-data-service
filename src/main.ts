@@ -5,11 +5,9 @@ import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import { useContainer } from 'class-validator'
 import helmet from 'helmet'
-import { Logger } from 'nestjs-pino'
 import { initializeTransactionalContext } from 'typeorm-transactional'
 
 import { AppModule } from './app.module'
-import { setupSwagger } from './swagger'
 
 /**
  *
@@ -29,12 +27,9 @@ async function bootstrap(): Promise<void> {
   app.enableShutdownHooks()
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: appConfig.defaultApiVersion })
   app.use(helmet())
-  app.useLogger(app.get(Logger))
   app.setGlobalPrefix(appConfig.apiPrefix)
   app.useBodyParser('json', { limit: '256kb' })
   app.useBodyParser('urlencoded', { extended: true, limit: '256kb' })
-  // app.useStaticAssets(UPLOAD_BASE_DEST, { prefix: UPLOAD_BASE_URL_PREFIX, index: false })
-  // app.useStaticAssets('public/images', { prefix: '/static/images', index: false })
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -46,9 +41,8 @@ async function bootstrap(): Promise<void> {
   )
   useContainer(app.select(AppModule), { fallbackOnErrors: true })
 
-  if (appConfig.env !== 'production') {
-    setupSwagger(app, appConfig)
-  }
+  // if (appConfig.env !== 'production') {
+  // }
 
   await app.listen(appConfig.port, appConfig.host, () => {
     console.log(`Servidor rodando na http://${appConfig.host}:${appConfig.port}`, 'Bootstrap')

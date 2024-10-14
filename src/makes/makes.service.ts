@@ -4,8 +4,8 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { lastValueFrom } from 'rxjs'
 import { Repository } from 'typeorm'
 
-import { Make } from '../entities/make.entity'
-import { VehicleType } from '../entities/vehicle-type.entity'
+import { Make } from './entitites/make.entity'
+import { VehicleType } from '../vehicle-types/entities/vehicle-type.entity'
 import { XmlParserService } from '../xml-parser/xml-parser.service'
 
 interface ParsedMakeData {
