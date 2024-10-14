@@ -19,8 +19,6 @@
 
 - `npm run start:dev` - Start the development server.
 - `npm run build` - Build the API.
-- `npm run build:dts` - Build the API with declaration files.
-- `npm run build:alias` - Build the API with alias files.
 - `npm run format` - Format the code.
 - `npm run lint` - Lint the code.
 - `npm run lint:fix` - Fix the code.
