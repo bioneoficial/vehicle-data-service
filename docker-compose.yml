@@ -6,7 +6,7 @@ services:
     container_name: vehicle-data-service
     image: vehicle-data-service:prod
     depends_on:
-      - db
+      - postgres
     extra_hosts:
       - "host.docker.internal:host-gateway"
     env_file:
@@ -18,13 +18,13 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_DATABASE: ${DB_DATABASE}
-      NODE_ENV: production
+      NODE_ENV: development
     networks:
       - vehicle_network
     ports:
       - "3000:3000"
 
-  db:
+  postgres:
     image: postgres:15.4-alpine
     container_name: vehicle-db
     restart: unless-stopped

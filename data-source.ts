@@ -3,8 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { DataSource } from 'typeorm'
 
 import { Make } from '#src/makes/entitites/make.entity'
-
-import { VehicleType } from './src/vehicle-types/entities/vehicle-type.entity'
+import { VehicleType } from '#src/vehicle-types/entities/vehicle-type.entity'
 
 ConfigModule.forRoot()
 

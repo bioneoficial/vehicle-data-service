@@ -1,11 +1,15 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
-import { ConfigModule, ConfigService } from '@nestjs/config'
+import { ConfigModule, ConfigType } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
+import { TypeOrmModule } from '@nestjs/typeorm'
 import { join } from 'path'
+import { DataSource } from 'typeorm'
+import { addTransactionalDataSource, getDataSourceByName } from 'typeorm-transactional'
 
 import appConfig from '#src/config/app.config'
+import DatabaseConfig from '#src/config/database.config'
+import environment from '#src/config/environment'
 import { MakesModule } from '#src/makes/makes.module'
 import { VehicleTypesModule } from '#src/vehicle-types/vehicle-types.module'
 
@@ -22,27 +26,28 @@ import { AppService } from './app.service'
       playground: true
     }),
     ConfigModule.forRoot({
-      load: [appConfig],
-      envFilePath: [`.env.${process.env['NODE_ENV'] ?? 'development'}`],
-
-      isGlobal: true
+      isGlobal: true,
+      cache: environment.NODE_ENV === 'production',
+      ignoreEnvFile: environment.IGNORE_ENV_FILE === 'true',
+      expandVariables: true,
+      load: [appConfig, DatabaseConfig]
     }),
     MakesModule,
     VehicleTypesModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService): TypeOrmModuleOptions => ({
-        type: 'postgres',
-        host: configService.get('DB_HOST') ?? 'localhost',
-        port: parseInt(configService.get('DB_PORT', '5432'), 10) || 5432,
-        username: configService.get('DB_USERNAME') ?? 'postgres',
-        password: configService.get('DB_PASSWORD') ?? 'bione',
-        database: configService.get('DB_DATABASE') ?? 'vehicle_db',
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true,
-        autoLoadEntities: true
-      }),
-      inject: [ConfigService]
+      inject: [DatabaseConfig.KEY],
+      useFactory(config: ConfigType<typeof DatabaseConfig>) {
+        return config
+      },
+      async dataSourceFactory(options) {
+        if (!options) {
+          throw new Error('Invalid options passed')
+        }
+
+        return await (getDataSourceByName('default') ??
+          addTransactionalDataSource(new DataSource(options)))
+      }
     })
   ],
   providers: [

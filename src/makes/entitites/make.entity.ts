@@ -1,4 +1,4 @@
-import type { VehicleType } from '../../vehicle-types/entities/vehicle-type.entity'
+import type { VehicleType } from '#src/vehicle-types/entities/vehicle-type.entity'
 
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 

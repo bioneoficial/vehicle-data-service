@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type MakeDTO {
+  makeId: Int!
+  makeName: String!
+  vehicleTypes: [VehicleTypeDTO!]
+}
+
+type Query {
+  getAllMakes: [MakeDTO!]!
+  getAllVehicleTypes: [VehicleTypeDTO!]!
+  getMake(makeId: Int!): MakeDTO
+  getVehicleType(vehicleTypeId: Int!): VehicleTypeDTO
+}
+
+type VehicleTypeDTO {
+  vehicleTypeId: Int!
+  vehicleTypeName: String!
+}

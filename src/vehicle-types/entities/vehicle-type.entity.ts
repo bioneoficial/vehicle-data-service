@@ -1,4 +1,4 @@
-import type { Make } from '../../makes/entitites/make.entity'
+import type { Make } from '#src/makes/entitites/make.entity'
 
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
 
